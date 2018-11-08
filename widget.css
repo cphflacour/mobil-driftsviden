@@ -27,11 +27,20 @@ button-not.active {
 .widget-layerswitch {
     position: absolute;
     max-height: 700px;
+    top: 10px;
+    left: 58px;
 }
 .ol-zoom {
     visibility: hidden;
 }
 .widget-layerswitch-text { 
-    font-size: x-large; 
+    font-size: large; 
 }
-
+.widget-layerswitch>.widget-layerswitch-listcontainer
+{
+    background-color: aliceblue;
+}
+.widget-hoverbox-sub, .widget-hoverbox-subheader
+{
+    padding: 4px;
+}

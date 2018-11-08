@@ -16,6 +16,7 @@
         "layer": [
           {
             "name": "Baggrundskort",
+            "disable": true,
             "id": "theme-startkort-color",
             "type": "WMS",
             "host": "//0gwc-kbhkort.kk.dk/tilecache/service/wms?",
@@ -25,7 +26,19 @@
             "visible": true
           },
           {
+            "id": "theme-startkort-graa",
+            "disable": false,
+            "name": "Gråtonet kort",
+            "type": "WMS",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-startkort-graa",
+            "copyright": "© Københavns Kommune",
+            "singleTile": true,
+            "visible": true
+          },
+          {
             "name": "enhedsgrænser",
+            "disable": false,
             "id": "theme-park-enhedsgraenser_mobildrift_widget",
             "type": "WMS",
             "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
@@ -47,7 +60,7 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_belaegninger&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
                 "dataType": "json"
                 },
-            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "template_info": "<div class='widget-hoverbox-title' style='color:#000;background-color:#999;'>Belægninger</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
             "visible": false
           },
           {
@@ -62,7 +75,7 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:trae_basis&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
                 "dataType": "json"
                 },
-            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Plantet: {{plantet_halvaar}}</div>",
+            "template_info": "<div class='widget-hoverbox-title' style='color:#fff;background-color:#a94442;'>Træ</div><div class=\"widget-hoverbox-sub\">{{element}}<br />Plan: {{driftsplan_navn}}<br />Plantet: {{planteaar}},{{plantet_halvaar}}<br />Art: {{dansk_navn}}</div>",
             "visible": false
           },
           {
@@ -78,7 +91,7 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_graes&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
                 "dataType": "json"
                 },
-            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "template_info": "<div class='widget-hoverbox-title' style='color:#fff;background-color:#5cb85c;'>Græs</div><div class=\"widget-hoverbox-sub\">{{element}}<br />Plan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
             "visible": false
           },
           {
@@ -94,7 +107,7 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_terraenudstyr_p&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters) AND element='12.10 Legeredskaber'",
                 "dataType": "json"
                 },
-            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "template_info": "<div class='widget-hoverbox-title' style='color:#000;background-color:#eee;'>Legepladsredskaber</div><div class=\"widget-hoverbox-sub\">{{under_element}}<br />Plan: {{driftsplan_navn}}<br />ID: {{id}}</div>",
             "visible": false
           }
         ],
@@ -140,7 +153,8 @@
               "disable": false,
               "eventtype": ["click", "mapclick"],
               "type": "cloud",
-              "offset": [0, 20]
+              "offset": [0, 20],
+              "multifeature": 5
             }
           }
           ]
