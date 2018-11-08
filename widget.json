@@ -1,0 +1,150 @@
+{
+  "objects": [
+    {
+      "map":
+      {
+        "srs": "EPSG:25832",
+        "maxZoomLevel": 0,
+        "minZoomLevel": 15,
+        "css": "widget.css",
+        "view":
+        {
+          "zoomLevel": 6,
+          "x": 722000,
+          "y": 6175600
+        },
+        "layer": [
+          {
+            "name": "Baggrundskort",
+            "id": "theme-startkort-color",
+            "type": "WMS",
+            "host": "//0gwc-kbhkort.kk.dk/tilecache/service/wms?",
+            "layer_name": "theme-startkort",
+            "copyright": "© Københavns Kommune",
+            "minScale": 150,
+            "visible": true
+          },
+          {
+            "name": "enhedsgrænser",
+            "id": "theme-park-enhedsgraenser_mobildrift_widget",
+            "type": "WMS",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-park-enhedsgraenser_mobildrift_widget",
+            "copyright": "© Københavns Kommune",
+            "singleTile": false,
+            "visible": true
+          },
+          {
+            "name": "Belægninger",
+            "disable": false,
+            "id": "theme-ggo_belaegninger",
+            "type": "WMS",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-ggo_belaegninger",
+            "copyright": "© Københavns Kommune",
+            "singleTile": true,
+            "features_infohost": { 
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_belaegninger&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "dataType": "json"
+                },
+            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "visible": false
+          },
+          {
+            "id": "theme-park-traer_mobildrift_widget",
+            "name": "Træer",
+            "type": "WMS",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-park-traer_mobildrift_widget",
+            "copyright": "© Københavns Kommune",
+            "singleTile": true,
+            "features_infohost": { 
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:trae_basis&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "dataType": "json"
+                },
+            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Plantet: {{plantet_halvaar}}</div>",
+            "visible": false
+          },
+          {
+            "name": "Græs",
+            "disable": false,
+            "id": "theme-park-graes_mobildrift_widget",
+            "type": "WMS",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-park-graes_mobildrift_widget",
+            "copyright": "© Københavns Kommune",
+            "singleTile": true,
+            "features_infohost": { 
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_graes&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "dataType": "json"
+                },
+            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "visible": false
+          },
+          {
+            "name": "Legepladsredskaber",
+            "id": "theme-park-legeudstyr_mobildrift_widget",
+            "features": true,
+            "type": "WMS",
+            "copyright": "© Københavns Kommune",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-park-legeudstyr_mobildrift_widget",
+            "singleTile": true,
+            "features_infohost": { 
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_terraenudstyr_p&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters) AND element='12.10 Legeredskaber'",
+                "dataType": "json"
+                },
+            "template_info": "<div class='widget-hoverbox-title'>{{type}}</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
+            "visible": false
+          }
+        ],
+        "controls": [
+          {
+            "layerswitch":
+            {
+              "disable": false,
+              "layers": "all",
+              "XXXdetach": "layerswitch",
+              "excludeLayers": [
+                "theme-startkort-graa",
+                "theme-startkort-color",
+                "theme-disclaimer",
+                "theme-park-enhedsgraenser_mobildrift_widget"
+              ],
+              "showbuttons": true,
+              "showlegend": false,
+              "selectAll": false,
+              "type": "list",
+              "expand": "up",
+              "host": "//kbhkort.kk.dk",
+              "profile": "widget",
+              "activateButton": {}
+            }
+          },
+          {
+            "location":
+            {
+              "disable": false,
+              "zoom": 12,
+              "features_style":
+              {
+                "icon": "//kkkortdata.spatialsuite.dk/ikoner/generelle/location_icon_18x30.png"
+              },
+              "onStart": true,
+              "onClick": true
+            }
+          },
+          {
+            "info":
+            {
+              "disable": false,
+              "eventtype": ["click", "mapclick"],
+              "type": "cloud",
+              "offset": [0, 20]
+            }
+          }
+          ]
+        }
+    }
+]
+}
