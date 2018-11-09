@@ -97,7 +97,6 @@
           {
             "name": "Legepladsredskaber",
             "id": "theme-park-legeudstyr_mobildrift_widget",
-            "features": true,
             "type": "WMS",
             "copyright": "© Københavns Kommune",
             "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
@@ -153,7 +152,7 @@
               "disable": false,
               "eventtype": ["click", "mapclick"],
               "type": "cloud",
-              "offset": [0, 20],
+              "offset": [0, 42],
               "multifeature": 5
             }
           }

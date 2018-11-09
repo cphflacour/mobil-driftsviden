@@ -3,7 +3,7 @@ body, html {
       height: 100%;
       padding: 0;
       margin: 0;
-      /* background-color: red; */
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
  }
 
 button-not.active {
@@ -43,4 +43,11 @@ button-not.active {
 .widget-hoverbox-sub, .widget-hoverbox-subheader
 {
     padding: 4px;
+}
+
+.widget-hoverbox-sub, 
+.widget-hoverbox-subheader,
+.widget-hoverbox-title
+{
+    font-size: 13px
 }
