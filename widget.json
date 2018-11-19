@@ -60,6 +60,10 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_belaegninger&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
                 "dataType": "json"
                 },
+            "features_style": {
+              "strokecolor_selected": "#0000FF",
+              "strokewidth_selected": "3"
+            },
             "template_info": "<div class='widget-hoverbox-title' style='color:#000;background-color:#999;'>Belægninger</div><div class=\"widget-hoverbox-sub\">Element: {{element}}<br />Driftsplan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
             "visible": false
           },
@@ -95,6 +99,10 @@
                 "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_graes&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}), {{buffer}}, meters)",
                 "dataType": "json"
                 },
+            "features_style": {
+              "strokecolor_selected": "#0000FF",
+              "strokewidth_selected": "3"
+            },
             "template_info": "<div class='widget-hoverbox-title' style='color:#fff;background-color:#5cb85c;'>Græs</div><div class=\"widget-hoverbox-sub\">{{element}}<br />Plan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
             "visible": false
           },
