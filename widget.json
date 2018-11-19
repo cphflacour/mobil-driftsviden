@@ -71,8 +71,12 @@
             "layer_name": "theme-park-traer_mobildrift_widget",
             "copyright": "© Københavns Kommune",
             "singleTile": true,
+            "features_style": {
+              "icon_selected": "//kkkortdata.spatialsuite.dk/ikoner/generelle/cirkel_26_roed_transp.png",
+              "yOffset_selected": "12"
+            },
             "features_infohost": { 
-                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:trae_basis&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:trae_basis&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}), <% print(buffer * 5) %>, meters)",
                 "dataType": "json"
                 },
             "template_info": "<div class='widget-hoverbox-title' style='color:#fff;background-color:#a94442;'>Træ</div><div class=\"widget-hoverbox-sub\">{{element}}<br />Plan: {{driftsplan_navn}}<br />Plantet: {{planteaar}},{{plantet_halvaar}}<br />Art: {{dansk_navn}}</div>",
@@ -88,7 +92,7 @@
             "copyright": "© Københavns Kommune",
             "singleTile": true,
             "features_infohost": { 
-                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_graes&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_graes&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}), {{buffer}}, meters)",
                 "dataType": "json"
                 },
             "template_info": "<div class='widget-hoverbox-title' style='color:#fff;background-color:#5cb85c;'>Græs</div><div class=\"widget-hoverbox-sub\">{{element}}<br />Plan: {{driftsplan_navn}}<br />Areal (kvm): {{areal_kvm}}</div>",
@@ -102,10 +106,15 @@
             "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
             "layer_name": "theme-park-legeudstyr_mobildrift_widget",
             "singleTile": true,
+            "features_type": "point",
             "features_infohost": { 
-                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_terraenudstyr_p&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters) AND element='12.10 Legeredskaber'",
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ggo_terraenudstyr_p&request=GetFeature&version=1.0.0&maxfeatures=3&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}), <% print(buffer * 5) %>, meters) AND element='12.10 Legeredskaber'",
                 "dataType": "json"
                 },
+            "features_style": {
+              "icon_selected": "//kkkortdata.spatialsuite.dk/ikoner/generelle/cirkel_26_roed_transp.png",
+              "yOffset_selected": "12"
+            },
             "template_info": "<div class='widget-hoverbox-title' style='color:#000;background-color:#eee;'>Legepladsredskaber</div><div class=\"widget-hoverbox-sub\">{{under_element}}<br />Plan: {{driftsplan_navn}}<br />ID: {{id}}</div>",
             "visible": false
           }
@@ -143,7 +152,8 @@
                 "icon": "//kkkortdata.spatialsuite.dk/ikoner/generelle/location_icon_18x30.png"
               },
               "onStart": true,
-              "onClick": true
+              "onClick": true,
+              "silent": true
             }
           },
           {
