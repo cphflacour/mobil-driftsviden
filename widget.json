@@ -23,7 +23,8 @@
             "layer_name": "theme-startkort",
             "copyright": "© Københavns Kommune",
             "minScale": 150,
-            "visible": true
+            "visible": false,
+            "features": false
           },
           {
             "id": "theme-startkort-graa",
@@ -34,7 +35,8 @@
             "layer_name": "theme-startkort-graa",
             "copyright": "© Københavns Kommune",
             "singleTile": true,
-            "visible": true
+            "visible": true,
+            "features": false
           },
           {
             "name": "enhedsgrænser",
@@ -46,6 +48,50 @@
             "copyright": "© Københavns Kommune",
             "singleTile": false,
             "visible": true
+          },
+          {
+            "name": "Jordstykker",
+            "id": "theme-mat-jordstykke_ejer_kk_widget",
+            "disable": false,
+            "features": true,
+            "type": "WMS",
+            "visible": false,
+            "features_host": "//kbhkort.kk.dk/jsp/modules/widget/geojson.jsp?service=service_mat_jordstykke_ejer_kbh",
+            "features_type": "Polygon",
+            "features_style": {
+              "fillcolor": "#ff00000",
+              "fillcolor_selected": "#FFFFFF",
+              "fillopacity": "0.0001",
+              "fillopacity_selected": "0.3",
+              "strokecolor": "#000000",
+              "strokecolor_selected": "#ff0000",
+              "strokewidth": "1",
+              "strokewidth_selected": "3",
+              "strokeopacity": "0.01",
+              "strokeopacity_selected": "1"
+            },
+            "template": "-",
+            "copyright": "© Københavns Kommune",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-mat-jordstykke_ejer_kk_widget",
+            "singleTile": true,
+            "template_info": "<div class='widget-hoverbox-title'>Matrikel: {{matrikel}}</div><div  class='widget-hoverbox-sub'>Areal: {{regareal}}<br />Vejareal: {{vejareal}}<br />Adresse: {{ejendom_beliggenhed}}<br />Ejernavn: {{ejer_navn}} - {{ejer_conavn}}</div>"
+            },
+            {
+            "name": "Kajkanter",
+            "id": "theme-natur-ejerforhold_kajkant_widget",
+            "type": "WMS",
+            "visible": false,
+            "features_infohost": { 
+                "host": "//wfs-kbhkort.kk.dk/k101/ows?service=WFS&typename=k101:ejerforhold_kajkant&request=GetFeature&version=1.0.0&maxfeatures=1&outputFormat=json&CQL_FILTER=DWITHIN(wkb_geometry,POINT({{x}} {{y}}),{{buffer}},meters)",
+                "dataType": "json"
+                },
+            "template": "-",
+            "copyright": "© Københavns Kommune",
+            "host": "//kbhkort.kk.dk/wms?SERVICENAME=widget",
+            "layer_name": "theme-natur-ejerforhold_kajkant_widget",
+            "singleTile": true,
+            "template_info": "<div class='widget-hoverbox-title'>Kajkant</div><div  class='widget-hoverbox-sub'>Ejer: {{ejerforhold}}<br />Note: {{Note}}</div>"
           },
           {
             "name": "Belægninger",
@@ -132,7 +178,15 @@
             "layerswitch":
             {
               "disable": false,
-              "layers": "all",
+              "layerOrder": true, 
+              "layers": [
+                "theme-park-traer_mobildrift_widget",
+                "theme-park-legeudstyr_mobildrift_widget",
+                "theme-ggo_belaegninger",
+                "theme-park-graes_mobildrift_widget",
+                "theme-mat-jordstykke_ejer_kk_widget",
+                "theme-natur-ejerforhold_kajkant_widget"
+                                        ],
               "XXXdetach": "layerswitch",
               "excludeLayers": [
                 "theme-startkort-graa",
@@ -144,7 +198,7 @@
               "showlegend": false,
               "selectAll": false,
               "type": "list",
-              "expand": "up",
+              "expand": "down",
               "host": "//kbhkort.kk.dk",
               "profile": "widget",
               "activateButton": {}
